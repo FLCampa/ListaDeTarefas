@@ -1,9 +1,13 @@
 package br.edu.ifsp.scl.ads.pdm.listadetarefas.model
 
-import androidx.recyclerview.widget.RecyclerView
-import br.edu.ifsp.scl.ads.pdm.listadetarefas.adapter.OnClickListener
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 class Tarefa (
-
-        ) {
-}
+        val titulo: String = "",
+        val usuario: String = "",
+        val dataCriacao: String = "",
+        var descricao: String = "",
+        var dataCumprimento: String = ""
+): Parcelable
