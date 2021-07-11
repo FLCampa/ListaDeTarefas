@@ -1,7 +1,8 @@
-package br.edu.ifsp.scl.ads.pdm.listadetarefas
+package br.edu.ifsp.scl.ads.pdm.listadetarefas.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.edu.ifsp.scl.ads.pdm.listadetarefas.R
 
 class EditarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
