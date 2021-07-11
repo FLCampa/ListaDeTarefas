@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ListaDeTarefas">
-        <activity android:name=".MainActivity">
+        <activity android:name=".EditarActivity"></activity>
+        <activity android:name=".RecuperarSenhaActivity" />
+        <activity android:name=".CadastroActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".TarefasActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
