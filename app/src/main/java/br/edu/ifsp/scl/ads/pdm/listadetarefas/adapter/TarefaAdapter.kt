@@ -15,21 +15,27 @@ class TarefaAdapter(
 ): RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
 
     inner class TarefaViewHolder(viewTarefa: View): RecyclerView.ViewHolder(viewTarefa){
-        val criacaoUsuario : TextView = viewTarefa.findViewById(R.id.criacaoUsuario)
+        val titulo : TextView = viewTarefa.findViewById(R.id.titulo)
+        val usuario : TextView = viewTarefa.findViewById(R.id.criacaoUsuario)
         val dataCriacao : TextView = viewTarefa.findViewById(R.id.dataCriacao)
+        val descricao: TextView = viewTarefa.findViewById(R.id.descricao)
+        val dataCumprimento: TextView = viewTarefa.findViewById(R.id.dataCumprimento)
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TarefaViewHolder {
-        val viewTarefa: View = LayoutInflater.from(parent.context).inflate(R.layout.view_tarefa, parent, false)
+        val viewTarefa: View = LayoutInflater.from(parent.context).inflate(R.layout.view_tarefas, parent, false)
         return TarefaViewHolder(viewTarefa)
     }
 
     override fun onBindViewHolder(holder: TarefaViewHolder, position: Int) {
         val tarefa = tarefaList[position]
 
+        holder.titulo.text = tarefa.titulo
+        holder.usuario.text = tarefa.usuario
         holder.dataCriacao.text = tarefa.dataCriacao
-        holder.criacaoUsuario.text = tarefa.criacaoUsuario
+        holder.descricao.text = tarefa.descricao
+        holder.dataCumprimento.text = tarefa.dataCumprimento
         holder.itemView.setOnClickListener {
             onTarefaClickListener.onTarefaClick(position)
         }
