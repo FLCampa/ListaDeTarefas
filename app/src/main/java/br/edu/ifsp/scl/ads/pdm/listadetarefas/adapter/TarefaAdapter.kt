@@ -15,14 +15,13 @@ class TarefaAdapter(
 ): RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
 
     inner class TarefaViewHolder(viewTarefa: View): RecyclerView.ViewHolder(viewTarefa){
-        val titulo : TextView = viewTarefa.findViewById(R.id.titulo)
-        val usuario : TextView = viewTarefa.findViewById(R.id.criacaoUsuario)
-        val dataCriacao : TextView = viewTarefa.findViewById(R.id.dataCriacao)
-        val descricao: TextView = viewTarefa.findViewById(R.id.descricao)
-        val dataCumprimento: TextView = viewTarefa.findViewById(R.id.dataCumprimento)
+        val titulo : TextView = viewTarefa.findViewById(R.id.tituloTv)
+        val usuario : TextView = viewTarefa.findViewById(R.id.usuarioTv)
+        val dataCriacao : TextView = viewTarefa.findViewById(R.id.dataCriacaoTv)
+        val descricao: TextView = viewTarefa.findViewById(R.id.descricaoTv)
+        val dataCumprimento: TextView = viewTarefa.findViewById(R.id.dataCumprimentoTv)
     }
-
-
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TarefaViewHolder {
         val viewTarefa: View = LayoutInflater.from(parent.context).inflate(R.layout.view_tarefas, parent, false)
         return TarefaViewHolder(viewTarefa)
