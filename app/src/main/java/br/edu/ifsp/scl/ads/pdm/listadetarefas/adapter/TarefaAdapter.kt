@@ -21,7 +21,7 @@ class TarefaAdapter(
         val descricao: TextView = viewTarefa.findViewById(R.id.descricaoTv)
         val dataCumprimento: TextView = viewTarefa.findViewById(R.id.dataCumprimentoTv)
     }
-    
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TarefaViewHolder {
         val viewTarefa: View = LayoutInflater.from(parent.context).inflate(R.layout.view_tarefas, parent, false)
         return TarefaViewHolder(viewTarefa)
