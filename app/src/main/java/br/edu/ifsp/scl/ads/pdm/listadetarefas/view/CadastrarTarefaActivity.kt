@@ -1,13 +1,16 @@
 package br.edu.ifsp.scl.ads.pdm.listadetarefas.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextMenu
+import android.view.ContextMenu.ContextMenuInfo
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.R
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.databinding.ActivityCadastrarTarefaBinding
-import br.edu.ifsp.scl.ads.pdm.listadetarefas.databinding.ActivityTarefasBinding
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.model.Tarefa
+
 
 class CadastrarTarefaActivity : AppCompatActivity() {
 
@@ -38,4 +41,7 @@ class CadastrarTarefaActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
+
 }
