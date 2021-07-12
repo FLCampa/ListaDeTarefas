@@ -74,7 +74,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.novaTarefaMi -> {
-            val novaTarefaIntent = Intent(this, CadastroActivity::class.java)
+            val novaTarefaIntent = Intent(this, CadastrarTarefaActivity::class.java)
             novaTarefaLauncher.launch(novaTarefaIntent)
             true
         }
