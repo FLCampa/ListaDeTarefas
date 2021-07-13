@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.edu.ifsp.scl.ads.pdm.listadetarefas.AutenticacaoFirebase
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.R
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.adapter.OnClickListener
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.adapter.TarefaAdapter
@@ -125,4 +126,10 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
         return false
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
+            finish()
+        }
+    }
 }
