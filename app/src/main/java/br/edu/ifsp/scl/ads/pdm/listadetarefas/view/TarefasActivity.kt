@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.R
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.adapter.OnClickListener
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.adapter.TarefaAdapter
+import br.edu.ifsp.scl.ads.pdm.listadetarefas.controller.TarefaController
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.databinding.ActivityTarefasBinding
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.model.Tarefa
 
@@ -24,6 +25,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
     private lateinit var tarefasAdapter: TarefaAdapter
     private lateinit var tarefasLayoutManager: LinearLayoutManager
     private lateinit var tarefa: Tarefa
+    private lateinit var tarefaController: TarefaController
 
     private lateinit var novaTarefaLauncher: ActivityResultLauncher<Intent>
     private lateinit var editarTarefaLauncher: ActivityResultLauncher<Intent>
@@ -34,6 +36,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
         setContentView(activityTarefasBinding.root)
         setTitle(R.string.lista_de_tarefas)
         tarefasList = mutableListOf()
+        tarefaController = TarefaController(this)
 
         for (i in  1..10){
             tarefasList.add(
@@ -60,7 +63,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
                     tarefasList.add(tarefa)
                     tarefasAdapter.notifyDataSetChanged()
 
-
+                    tarefaController.insereTarefa(tarefa)
                 }
             }
         }

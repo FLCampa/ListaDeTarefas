@@ -1,9 +1,11 @@
 package br.edu.ifsp.scl.ads.pdm.listadetarefas.model
 
+
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.model.TarefaFirebase.Constantes.LISTA_TAREFAS_DATABASE
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
@@ -11,7 +13,7 @@ import com.google.firebase.ktx.Firebase
 class TarefaFirebase: TarefaDAO {
 
     object Constantes {
-        val LISTA_TAREFAS_DATABASE = "listaTarefas"
+        val LISTA_TAREFAS_DATABASE = "listaDeTarefas"
     }
 
     private val tarafasListRtDb = Firebase.database.getReference(LISTA_TAREFAS_DATABASE)
@@ -40,6 +42,18 @@ class TarefaFirebase: TarefaDAO {
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
 
             override fun onCancelled(error: DatabaseError) {}
+        })
+
+        tarafasListRtDb.addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var tarefa :Tarefa =  snapshot.getValue<Tarefa>()?:Tarefa()
+                tarefasList.add(tarefa)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
         })
     }
 
