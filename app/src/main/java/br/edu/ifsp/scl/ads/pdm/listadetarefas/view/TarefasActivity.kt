@@ -108,6 +108,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
         when(item.itemId){
             R.id.editarTarefaMi -> {
                 val editarTarefaIntent = Intent(this, EditarActivity::class.java)
+                editarTarefaIntent.putExtra(Intent.EXTRA_USER, tarefa)
                 editarTarefaLauncher.launch(editarTarefaIntent)
                 return true
             }

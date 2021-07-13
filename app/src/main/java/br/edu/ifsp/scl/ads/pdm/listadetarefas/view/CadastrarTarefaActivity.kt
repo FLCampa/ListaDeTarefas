@@ -28,7 +28,7 @@ class CadastrarTarefaActivity : AppCompatActivity() {
         with(activityCadastrarTarefaBinding) {
             tarefa = Tarefa(
                 tituloEt.text.toString(),
-                "",
+                "", // AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString()
                 dataCriacaoEt.text.toString(),
                 descricaoEt.text.toString(),
                 dataCumprimentoEt.text.toString()
