@@ -20,6 +20,7 @@ class CadastrarTarefaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityCadastrarTarefaBinding = ActivityCadastrarTarefaBinding.inflate(layoutInflater)
         setContentView(activityCadastrarTarefaBinding.root)
+        setTitle(R.string.cadastrar)
     }
 
     fun onClick(view: View) {

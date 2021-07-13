@@ -19,7 +19,9 @@ class TarefaAdapter(
         val dataCriacao : TextView = viewTarefa.findViewById(R.id.dataCriacaoTv)
         val descricao: TextView = viewTarefa.findViewById(R.id.descricaoTv)
         val dataCumprimento: TextView = viewTarefa.findViewById(R.id.dataCumprimentoTv)
-
+        init {
+            viewTarefa.setOnCreateContextMenuListener(this)
+        }
 
         override fun onCreateContextMenu( menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo? ) {
             menuInflater.inflate(R.menu.context_menu_tarefa, menu)

@@ -1,7 +1,6 @@
 package br.edu.ifsp.scl.ads.pdm.listadetarefas.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.Menu
@@ -10,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.R
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.adapter.OnClickListener
@@ -26,15 +26,16 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
     private lateinit var tarefa: Tarefa
 
     private lateinit var novaTarefaLauncher: ActivityResultLauncher<Intent>
+    private lateinit var editarTarefaLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityTarefasBinding = ActivityTarefasBinding.inflate(layoutInflater)
         setContentView(activityTarefasBinding.root)
-
+        setTitle(R.string.lista_de_tarefas)
         tarefasList = mutableListOf()
 
-        for (i in  1..5){
+        for (i in  1..10){
             tarefasList.add(
                 Tarefa(
                     "Titulo $i",
@@ -64,6 +65,14 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
             }
         }
 
+        editarTarefaLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
+            if (activityResult.resultCode == RESULT_OK) {
+                val tarefa: Tarefa? = activityResult.data?.getParcelableExtra<Tarefa>(Intent.EXTRA_USER)
+                if (tarefa != null) {
+
+                }
+            }
+        }
     }
 
     override fun onTarefaClick(posicao: Int) {
@@ -91,21 +100,21 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        //return super.onContextItemSelected(item)
-
 
         tarefa = tarefasList.get(tarefasAdapter.getPosicao())
-
 
         val posicao: Int = tarefasAdapter.getPosicao()
 
         when(item.itemId){
             R.id.editarTarefaMi -> {
-                Toast.makeText(this, "Editar", Toast.LENGTH_SHORT).show()
+                val editarTarefaIntent = Intent(this, EditarActivity::class.java)
+                editarTarefaLauncher.launch(editarTarefaIntent)
                 return true
             }
             R.id.removerTarefaMi -> {
-                Toast.makeText(this, "Remover", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, tarefa.titulo + " foi removido!", Toast.LENGTH_SHORT).show()
+                tarefasList.remove(tarefa)
+                tarefasAdapter.notifyDataSetChanged()
                 return true
             }
         }
