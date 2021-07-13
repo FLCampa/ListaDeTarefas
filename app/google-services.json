@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "62726490958",
-    "project_id": "listadetarefas-4b3f4",
-    "storage_bucket": "listadetarefas-4b3f4.appspot.com"
+    "project_number": "949141024935",
+    "firebase_url": "https://listadetarefas-c6f6f-default-rtdb.firebaseio.com",
+    "project_id": "listadetarefas-c6f6f",
+    "storage_bucket": "listadetarefas-c6f6f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:62726490958:android:e7cfe675bd9607eca12c1f",
+        "mobilesdk_app_id": "1:949141024935:android:3d2382de2babf703a8eb82",
         "android_client_info": {
           "package_name": "br.edu.ifsp.scl.ads.pdm.listadetarefas"
         }
       },
       "oauth_client": [
         {
-          "client_id": "62726490958-vu66uo37i6gc8i7dc94rl9ek1td3ivje.apps.googleusercontent.com",
+          "client_id": "949141024935-2vp3gpb6itk86iefhq25fhntt14n4rvu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.ifsp.scl.ads.pdm.listadetarefas",
+            "certificate_hash": "1406076ad5521a597048af16a579640e054e9a58"
+          }
+        },
+        {
+          "client_id": "949141024935-82lq1au0jvd2ou9s5d1fhalucttdoh45.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyARYuiBkKwLkAxIjC-YB-oFOVn9399dk5o"
+          "current_key": "AIzaSyCMle-j74s8x1sKaeEKD1UybJu1HkdeWNg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "62726490958-vu66uo37i6gc8i7dc94rl9ek1td3ivje.apps.googleusercontent.com",
+              "client_id": "949141024935-82lq1au0jvd2ou9s5d1fhalucttdoh45.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

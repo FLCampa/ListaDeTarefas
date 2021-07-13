@@ -126,10 +126,10 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
         return false
     }
 
-    override fun onStart() {
-        super.onStart()
-        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
-            finish()
-        }
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
+//            finish()
+//        }
+//    }
 }
