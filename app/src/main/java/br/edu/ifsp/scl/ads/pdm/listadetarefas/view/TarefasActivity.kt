@@ -95,6 +95,11 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
             novaTarefaLauncher.launch(novaTarefaIntent)
             true
         }
+        R.id.sairMi -> {
+            AutenticacaoFirebase.firebaseAuth.signOut()
+            AutenticacaoFirebase.googleSignInClient?.signOut()
+            true
+        }
         else -> {
             false
         }

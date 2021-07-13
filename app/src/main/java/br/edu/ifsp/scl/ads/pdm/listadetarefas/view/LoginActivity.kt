@@ -97,4 +97,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onStart() {
+        super.onStart()
+        if (AutenticacaoFirebase.firebaseAuth.currentUser != null) {
+            Toast.makeText(this, "Usuário já autenticado", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, TarefasActivity::class.java))
+        }
+    }
 }
