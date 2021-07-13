@@ -7,6 +7,7 @@ import android.view.ContextMenu.ContextMenuInfo
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import br.edu.ifsp.scl.ads.pdm.listadetarefas.AutenticacaoFirebase
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.R
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.databinding.ActivityCadastrarTarefaBinding
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.model.Tarefa
@@ -28,7 +29,7 @@ class CadastrarTarefaActivity : AppCompatActivity() {
         with(activityCadastrarTarefaBinding) {
             tarefa = Tarefa(
                 tituloEt.text.toString(),
-                "", // AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString()
+                AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString(),
                 dataCriacaoEt.text.toString(),
                 descricaoEt.text.toString(),
                 dataCumprimentoEt.text.toString()
@@ -43,6 +44,11 @@ class CadastrarTarefaActivity : AppCompatActivity() {
         }
     }
 
-
+    override fun onStart() {
+        super.onStart()
+        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
+            finish()
+        }
+    }
 
 }

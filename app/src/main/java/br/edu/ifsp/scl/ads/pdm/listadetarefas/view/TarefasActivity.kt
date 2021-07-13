@@ -38,18 +38,19 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
         setTitle(R.string.lista_de_tarefas)
         tarefasList = mutableListOf()
         tarefaController = TarefaController(this)
+        tarefasList = tarefaController.buscaTodasTarefas()
 
-        for (i in  1..10){
-            tarefasList.add(
-                Tarefa(
-                    "Titulo $i",
-                    "User $i",
-                    "Criação $i",
-                    "Descrição $i",
-                    "Cumprimento $i"
-                )
-            )
-        }
+//        for (i in  1..10){
+//            tarefasList.add(
+//                Tarefa(
+//                    "Titulo $i",
+//                    "User $i",
+//                    "Criação $i",
+//                    "Descrição $i",
+//                    "Cumprimento $i"
+//                )
+//            )
+//        }
 
         tarefasAdapter = TarefaAdapter(tarefasList, this, menuInflater)
         activityTarefasBinding.tarefasRv.adapter = tarefasAdapter
@@ -120,16 +121,17 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
                 Toast.makeText(this, tarefa.titulo + " foi removido!", Toast.LENGTH_SHORT).show()
                 tarefasList.remove(tarefa)
                 tarefasAdapter.notifyDataSetChanged()
+                tarefaController.removeTarefa(tarefa.titulo)
                 return true
             }
         }
         return false
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
-//            finish()
-//        }
-//    }
+    override fun onStart() {
+        super.onStart()
+        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
+            finish()
+        }
+    }
 }
