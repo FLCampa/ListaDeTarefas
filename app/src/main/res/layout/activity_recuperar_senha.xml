@@ -7,7 +7,7 @@
     tools:context=".view.RecuperarSenhaActivity">
 
     <EditText
-        android:id="@+id/emailRecuperarSenhaBt"
+        android:id="@+id/emailRecuperarSenhaEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -28,7 +28,7 @@
         android:onClick="onClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailRecuperarSenhaBt" />
+        app:layout_constraintTop_toBottomOf="@+id/emailRecuperarSenhaEt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
