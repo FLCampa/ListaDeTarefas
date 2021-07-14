@@ -9,5 +9,6 @@ class Tarefa (
         val usuario: String = "",
         val dataCriacao: String = "",
         var descricao: String = "",
-        var dataCumprimento: String = ""
+        var dataCumprimento: String = "",
+        var usuarioCumpriu: String = "",
 ): Parcelable

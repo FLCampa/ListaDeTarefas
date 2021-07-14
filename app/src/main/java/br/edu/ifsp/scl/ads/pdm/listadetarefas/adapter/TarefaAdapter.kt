@@ -19,6 +19,7 @@ class TarefaAdapter(
         val dataCriacao : TextView = viewTarefa.findViewById(R.id.dataCriacaoTv)
         val descricao: TextView = viewTarefa.findViewById(R.id.descricaoTv)
         val dataCumprimento: TextView = viewTarefa.findViewById(R.id.dataCumprimentoTv)
+        val usuarioCumpriu: TextView = viewTarefa.findViewById(R.id.usuarioCumpriuTv)
         init {
             viewTarefa.setOnCreateContextMenuListener(this)
         }
@@ -43,6 +44,7 @@ class TarefaAdapter(
         holder.dataCriacao.text = tarefa.dataCriacao
         holder.descricao.text = tarefa.descricao
         holder.dataCumprimento.text = tarefa.dataCumprimento
+        holder.usuarioCumpriu.text = tarefa.usuarioCumpriu
         holder.itemView.setOnClickListener {
             onTarefaClickListener.onTarefaClick(position)
         }

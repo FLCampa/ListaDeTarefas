@@ -111,7 +111,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
 
-        tarefa = tarefasList.get(tarefasAdapter.getPosicao())
+        tarefa = tarefasList[tarefasAdapter.getPosicao()]
 
         val posicao: Int = tarefasAdapter.getPosicao()
 
@@ -123,11 +123,23 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
                 return true
             }
             R.id.removerTarefaMi -> {
-                Toast.makeText(this, tarefa.titulo + " foi removido!", Toast.LENGTH_SHORT).show()
-                tarefasList.remove(tarefa)
-                tarefasAdapter.notifyDataSetChanged()
-                tarefaController.removeTarefa(tarefa.titulo)
+                if (tarefa.usuarioCumpriu == "") {
+                    Toast.makeText(this, tarefa.titulo + " foi removido!", Toast.LENGTH_SHORT).show()
+                    tarefasList.remove(tarefa)
+                    tarefasAdapter.notifyDataSetChanged()
+                    tarefaController.removeTarefa(tarefa.titulo)
+                }
+                else {
+                    Toast.makeText(this, tarefa.titulo + " foi cumprida e não pode ser removida!", Toast.LENGTH_SHORT).show()
+                }
                 return true
+            }
+            R.id.cumprirTarefaMi -> {
+                if (tarefa.usuarioCumpriu == "") {
+                    Toast.makeText(this, tarefa.titulo + " cumprida!", Toast.LENGTH_SHORT).show()
+                    tarefa.usuarioCumpriu = AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString()
+                    tarefasAdapter.notifyDataSetChanged()
+                }
             }
         }
         return false

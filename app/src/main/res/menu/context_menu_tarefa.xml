@@ -8,5 +8,9 @@
         <item
             android:id="@+id/removerTarefaMi"
             android:title="Remover" />
+
+        <item
+            android:id="@+id/cumprirTarefaMi"
+            android:title="Cumprir" />
     </group>
 </menu>
