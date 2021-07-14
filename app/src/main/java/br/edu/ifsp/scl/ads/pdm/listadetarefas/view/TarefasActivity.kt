@@ -74,7 +74,9 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
             if (activityResult.resultCode == RESULT_OK) {
                 val tarefa: Tarefa? = activityResult.data?.getParcelableExtra<Tarefa>(Intent.EXTRA_USER)
                 if (tarefa != null) {
-
+                    tarefasList.set(tarefasAdapter.getPosicao(), tarefa)
+                    tarefasAdapter.notifyDataSetChanged()
+                    tarefaController.atualizaTarefa(tarefa)
                 }
             }
         }
@@ -118,7 +120,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
         when(item.itemId){
             R.id.editarTarefaMi -> {
                 val editarTarefaIntent = Intent(this, EditarActivity::class.java)
-                editarTarefaIntent.putExtra(Intent.EXTRA_USER, tarefa)
+                editarTarefaIntent.putExtra(Intent.EXTRA_INDEX, tarefa)
                 editarTarefaLauncher.launch(editarTarefaIntent)
                 return true
             }
@@ -139,7 +141,12 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
                     Toast.makeText(this, tarefa.titulo + " cumprida!", Toast.LENGTH_SHORT).show()
                     tarefa.usuarioCumpriu = AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString()
                     tarefasAdapter.notifyDataSetChanged()
+                    tarefaController.atualizaTarefa(tarefa)
                 }
+                else {
+                    Toast.makeText(this, tarefa.titulo + " já foi cumprida!", Toast.LENGTH_SHORT).show()
+                }
+                return true
             }
         }
         return false

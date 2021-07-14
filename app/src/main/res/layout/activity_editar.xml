@@ -11,26 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:enabled="false"
         android:hint="Título"
         android:textSize="20sp"
         android:layout_margin="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:enabled="false"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/dataCriacaoEditarEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:enabled="false"
         android:hint="Data de criação"
         android:textSize="20sp"
         android:layout_margin="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tituloEditarEt"
-        android:enabled="false"/>
+        app:layout_constraintTop_toBottomOf="@id/tituloEditarEt" />
 
     <EditText
         android:id="@+id/descricaoEditarEt"
