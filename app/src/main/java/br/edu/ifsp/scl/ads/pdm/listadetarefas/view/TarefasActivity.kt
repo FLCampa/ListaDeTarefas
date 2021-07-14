@@ -22,11 +22,11 @@ import br.edu.ifsp.scl.ads.pdm.listadetarefas.model.Tarefa
 
 class TarefasActivity : AppCompatActivity(), OnClickListener {
     private lateinit var activityTarefasBinding: ActivityTarefasBinding
-    private lateinit var tarefasList: MutableList<Tarefa>
-    private lateinit var tarefasAdapter: TarefaAdapter
+    lateinit var tarefasList: MutableList<Tarefa>
+    lateinit var tarefasAdapter: TarefaAdapter
     private lateinit var tarefasLayoutManager: LinearLayoutManager
     private lateinit var tarefa: Tarefa
-    private lateinit var tarefaController: TarefaController
+    lateinit var tarefaController: TarefaController
 
     private lateinit var novaTarefaLauncher: ActivityResultLauncher<Intent>
     private lateinit var editarTarefaLauncher: ActivityResultLauncher<Intent>
@@ -119,9 +119,14 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
 
         when(item.itemId){
             R.id.editarTarefaMi -> {
-                val editarTarefaIntent = Intent(this, EditarActivity::class.java)
-                editarTarefaIntent.putExtra(Intent.EXTRA_INDEX, tarefa)
-                editarTarefaLauncher.launch(editarTarefaIntent)
+                if (tarefa.usuarioCumpriu == "") {
+                    val editarTarefaIntent = Intent(this, EditarActivity::class.java)
+                    editarTarefaIntent.putExtra(Intent.EXTRA_INDEX, tarefa)
+                    editarTarefaLauncher.launch(editarTarefaIntent)
+                }
+                else {
+                    Toast.makeText(this, tarefa.titulo + " foi cumprida e não pode ser editada!", Toast.LENGTH_SHORT).show()
+                }
                 return true
             }
             R.id.removerTarefaMi -> {
@@ -150,6 +155,11 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
             }
         }
         return false
+    }
+
+    fun atualizarTarefasList(tarefa: Tarefa) {
+        tarefasList.add(tarefa)
+        tarefasAdapter.notifyDataSetChanged()
     }
 
     override fun onStart() {

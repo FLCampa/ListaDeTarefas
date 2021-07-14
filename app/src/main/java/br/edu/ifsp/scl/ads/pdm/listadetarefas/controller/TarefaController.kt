@@ -9,7 +9,7 @@ class TarefaController(tarefasActivity: TarefasActivity) {
     val tarefaDAO : TarefaDAO
 
     init {
-        tarefaDAO = TarefaFirebase()
+        tarefaDAO = TarefaFirebase(tarefasActivity)
     }
 
     fun insereTarefa(tarefa: Tarefa) = tarefaDAO.createTarefa(tarefa)

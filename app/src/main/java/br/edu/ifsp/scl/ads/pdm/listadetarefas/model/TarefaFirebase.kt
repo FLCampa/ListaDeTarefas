@@ -2,6 +2,7 @@ package br.edu.ifsp.scl.ads.pdm.listadetarefas.model
 
 
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.model.TarefaFirebase.Constantes.LISTA_TAREFAS_DATABASE
+import br.edu.ifsp.scl.ads.pdm.listadetarefas.view.TarefasActivity
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -10,7 +11,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
-class TarefaFirebase: TarefaDAO {
+class TarefaFirebase(tarefasActivity: TarefasActivity): TarefaDAO {
 
     object Constantes {
         val LISTA_TAREFAS_DATABASE = "listaDeTarefas"
@@ -48,6 +49,8 @@ class TarefaFirebase: TarefaDAO {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var tarefa :Tarefa =  snapshot.getValue<Tarefa>()?:Tarefa()
                 tarefasList.add(tarefa)
+
+                tarefasActivity.atualizarTarefasList(tarefa)
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -11,6 +11,12 @@ import br.edu.ifsp.scl.ads.pdm.listadetarefas.AutenticacaoFirebase
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.R
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.databinding.ActivityCadastrarTarefaBinding
 import br.edu.ifsp.scl.ads.pdm.listadetarefas.model.Tarefa
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.util.*
 
 
 class CadastrarTarefaActivity : AppCompatActivity() {
@@ -26,11 +32,14 @@ class CadastrarTarefaActivity : AppCompatActivity() {
 
     fun onClick(view: View) {
         val tarefa: Tarefa
+        val sdf = SimpleDateFormat("dd/M/yyyy")
+        val currentDate = sdf.format(Date())
+
         with(activityCadastrarTarefaBinding) {
             tarefa = Tarefa(
                 tituloEt.text.toString(),
                 AutenticacaoFirebase.firebaseAuth.currentUser?.email.toString(),
-                dataCriacaoEt.text.toString(),
+                currentDate.toString(),
                 descricaoEt.text.toString(),
                 dataCumprimentoEt.text.toString()
             )
