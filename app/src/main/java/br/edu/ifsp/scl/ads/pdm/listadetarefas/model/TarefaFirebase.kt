@@ -26,6 +26,7 @@ class TarefaFirebase(tarefasActivity: TarefasActivity): TarefaDAO {
                 val novaTarefa: Tarefa = snapshot.getValue<Tarefa>()?:Tarefa()
                 if (tarefasList.indexOfFirst { it.titulo.equals(novaTarefa.titulo) } == -1) {
                     tarefasList.add(novaTarefa)
+                    tarefasActivity.atualizarAdapter()
                 }
             }
 
@@ -47,10 +48,12 @@ class TarefaFirebase(tarefasActivity: TarefasActivity): TarefaDAO {
 
         tarafasListRtDb.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                var tarefa :Tarefa =  snapshot.getValue<Tarefa>()?:Tarefa()
-                tarefasList.add(tarefa)
-
-                tarefasActivity.atualizarTarefasList(tarefa)
+                snapshot.getValue<HashMap<String, Tarefa>>()?.values?.forEach { tarefa ->
+                    if (tarefasList.indexOfFirst { it.titulo.equals(tarefa.titulo) } == -1) {
+                        tarefasList.add(tarefa)
+                        tarefasActivity.atualizarAdapter()
+                    }
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

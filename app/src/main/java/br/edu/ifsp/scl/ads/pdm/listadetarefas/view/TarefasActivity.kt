@@ -1,11 +1,13 @@
 package br.edu.ifsp.scl.ads.pdm.listadetarefas.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -157,10 +159,7 @@ class TarefasActivity : AppCompatActivity(), OnClickListener {
         return false
     }
 
-    fun atualizarTarefasList(tarefa: Tarefa) {
-        tarefasList.add(tarefa)
-        tarefasAdapter.notifyDataSetChanged()
-    }
+    fun atualizarAdapter() = tarefasAdapter.notifyDataSetChanged()
 
     override fun onStart() {
         super.onStart()

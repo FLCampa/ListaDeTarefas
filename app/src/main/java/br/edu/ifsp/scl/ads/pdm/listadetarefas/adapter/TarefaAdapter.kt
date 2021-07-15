@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.ads.pdm.listadetarefas.adapter
 
+import android.graphics.Color
 import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -45,6 +46,11 @@ class TarefaAdapter(
         holder.descricao.text = tarefa.descricao
         holder.dataCumprimento.text = tarefa.dataCumprimento
         holder.usuarioCumpriu.text = tarefa.usuarioCumpriu
+
+        if (tarefa.usuarioCumpriu != "") {
+            holder.titulo.setTextColor(Color.BLUE);
+        }
+
         holder.itemView.setOnClickListener {
             onTarefaClickListener.onTarefaClick(position)
         }
